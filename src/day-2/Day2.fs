@@ -41,4 +41,3 @@ let test () =
          |> Seq.length)
 
     printfn "%A" solution
-
