@@ -3,7 +3,7 @@ module AOC.Day3
 open System.IO
 
 let rec solve right down step (total: uint64) (arr: char [,]) =
-    if step * down >= 323 then
+    if step * down >= arr.GetLength 0 then
         total
     else
         match arr.[step * down, ((step * right) % 31)] with
