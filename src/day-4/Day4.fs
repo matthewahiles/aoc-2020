@@ -23,10 +23,10 @@ type Height =
 let parseHgt (n: string) =
     let isInches = n.Contains "in"
     let isCentimeters = n.Contains "cm"
-    let numeral = n.Substring(0, n.Length - 2)
+    let num = n.Substring(0, n.Length - 2)
     match (isInches, isCentimeters) with
-    | (true, _) -> Inches(int numeral)
-    | (_, true) -> Centimeters(int numeral)
+    | (true, _) -> Inches(int num)
+    | (_, true) -> Centimeters(int num)
     | _ -> None
 
 
@@ -53,7 +53,6 @@ let validatePid v = Regex.IsMatch(v, @"^\d{9}$")
 
 let validateField (f: string) =
     let p = f.Split [| ':' |]
-    printfn "%A" p
     match p.[0] with
     | "byr" -> validateByr (int p.[1])
     | "iyr" -> validateIyr (int p.[1])
@@ -62,7 +61,6 @@ let validateField (f: string) =
     | "hcl" -> validateHcl p.[1]
     | "ecl" -> validateEcl p.[1]
     | "pid" -> validatePid p.[1]
-    | "cid" -> false
     | _ -> false
 
 let validatePassportFields (p: string) =
@@ -71,7 +69,7 @@ let validatePassportFields (p: string) =
     let totalValid =
         Array.filter validateField pieces |> Array.length
 
-    totalValid >= 7
+    totalValid = 7
 
 let data =
     File.ReadAllText("./src/day-4/input.txt")
