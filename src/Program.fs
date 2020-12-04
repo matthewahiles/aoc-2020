@@ -1,7 +1,7 @@
 module Main =
   open System
 
-open AOC.Day3
+open AOC.Day4
 [<EntryPoint>]
 let main argv =
   test() |> ignore
