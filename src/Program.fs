@@ -1,7 +1,12 @@
 module Main =
   open System
 
-open AOC.Day4
+let translateVert b =
+  match b with
+  | 'F' -> '0'
+  | _ -> '1';;
+
+open AOC.Day5
 [<EntryPoint>]
 let main argv =
   test() |> ignore
